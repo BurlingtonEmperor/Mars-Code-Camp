@@ -43,14 +43,14 @@ function parseLine (line) {
       firstCode = sampleNum;
       moreSuppose = 0;
       break;
-    case "var" :
-      firstCode = "var";
-      moreSuppose = 3;
-      break;
-    case "if" :
-      firstCode = "if";
-      moreSuppose = 4;
-      break;
+    // case "var" :
+    //   firstCode = "var";
+    //   moreSuppose = 3;
+    //   break;
+    // case "if" :
+    //   firstCode = "if";
+    //   moreSuppose = 4;
+    //   break;
   }
 
   if (moreSuppose == 0) {
