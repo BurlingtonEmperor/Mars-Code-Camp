@@ -13,6 +13,7 @@ function runScript () {
 function parseLine (line) {
   let firstCode = "";
   let moreSuppose = 0;
+  
   switch (line[0]) {
     default:
       firstCode = "Syntax Error (this means that you miswrote a piece of your code.)";
@@ -51,6 +52,45 @@ function parseLine (line) {
       moreSuppose = 4;
       break;
   }
+
+  if (moreSuppose == 0) {
+    terminalOutput(firstCode);
+  }
+
+  switch (firstCode) {
+    case "output" :
+      let printedArr = line;
+      printedArr[0] = "";
+
+      let printedStatement = printedArr.join(" ");
+      let finalPrint = printedStatement.slice(1);
+      
+      terminalOutput(finalPrint);
+      break;
+    case "lib" :
+      switch (line[1]) {
+        case "robot" :
+          break;
+        default:
+          terminalOutput("Error: no such library exists! Try importing 'robot' instead.");
+          break;
+      }
+      break;
+    case "robomove" :
+      switch (line[0]) {
+        case "move" :
+          break;
+        case "turn" :
+          break;
+      }
+      break;
+  }
+}
+
+// Terminal
+
+function terminalOutput (output) {
+  
 }
 
 // Random events
