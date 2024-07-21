@@ -208,9 +208,13 @@ commandForm.onsubmit = function () {
       terminalOutput("help - Get a list of commands");
       terminalOutput("run - Run your code");
       terminalOutput("reset - Reset robot");
+      terminalOutput("guide - Access scripting guide");
       break;
     case "reset" :
       resetRobot();
+      break;
+    case "guide" :
+      window.open("https://github.com/BurlingtonEmperor/Mars-Code-Camp/blob/main/README.md");
       break;
   }
 }
