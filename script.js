@@ -2,19 +2,24 @@
 // Where the scripting will go
 let scriptContent = "";
 let sampleNum = 0;
+let robotImport = false;
 
 const commandForm = document.getElementById("cmd-form");
 
 function runScript () {
-  let scriptParsed = scriptContent.split("\n");
+  // alert(scriptContent);
+  let scriptParsed = scriptContent.split("[n");
   for (let i = 0; i < scriptParsed.length; i++) {
     let codeLine = scriptParsed[i].split(" ");
+    parseLine(codeLine);
   }
 }
 
 function parseLine (line) {
   let firstCode = "";
   let moreSuppose = 0;
+
+  // alert(line);
   
   switch (line[0]) {
     default:
@@ -32,10 +37,13 @@ function parseLine (line) {
       firstCode = "robomove";
       moreSuppose = 1;
       break;
-    case "turn" :
-      firstCode = "robomove";
+    case "right" :
+      firstCode = "right";
       moreSuppose = 1;
       break;
+    case "left" :
+      firstCode = "left";
+      moreSuppose = 1;
     case "collect" :
       moreSuppose = 0;
       firstCode = "Collected a sample!";
@@ -69,9 +77,11 @@ function parseLine (line) {
       
       terminalOutput(finalPrint);
       break;
+      
     case "lib" :
       switch (line[1]) {
         case "robot" :
+          robotImport = true;
           break;
         default:
           terminalOutput("Error: no such library exists! Try importing 'robot' instead.");
@@ -79,12 +89,54 @@ function parseLine (line) {
       }
       break;
     case "robomove" :
-      switch (line[0]) {
-        case "move" :
-          break;
-        case "turn" :
-          break;
+      if (robotImport == false) {
+        terminalOutput("Error: robot library was not imported.");
+        return false;
       }
+      if (isNaN(line[2])) {
+        terminalOutput('Error: "' + line[2] + '" is not a valid number.');
+      }
+
+      else {
+        
+      }
+      break;
+
+    case "right" :
+      if (robotImport == false) {
+        terminalOutput("Error: robot library was not imported.");
+        return false;
+      }
+      if (isNaN(line[2])) {
+        terminalOutput('Error: "' + line[2] + '" is not a valid number.');
+      }
+
+      else {
+
+      }
+      break;
+
+    case "left" :
+      if (robotImport == false) {
+        terminalOutput("Error: robot library was not imported.");
+        return false;
+      }
+      if (isNaN(line[2])) {
+        terminalOutput('Error: "' + line[2] + '" is not a valid number.');
+      }
+
+      else {
+
+      }
+      break;
+
+    case "collect" :
+      if (robotImport == false) {
+        terminalOutput("Error: robot library was not imported.");
+        return false;
+      }
+      sampleNum += 1;
+      terminalOutput("Collected one sample.");
       break;
   }
 }
@@ -104,11 +156,18 @@ commandForm.onsubmit = function () {
 
   switch (shortCmd) {
     case "run" :
-      alert(document.getElementById("code-editor").innerHTML);
+      let myStream = document.getElementById("code-editor").innerHTML;
+      let thyStream = myStream.replace("<div>", "[n");
+      let whyStream = thyStream.replace("</div>", "[n");
+      let kaiStream = whyStream.replace("<br>", "[n");
+      
+      scriptContent = kaiStream;
+      runScript();
       break;
     case "help" :
       terminalOutput("help - Get a list of commands");
       terminalOutput("run - Run your code");
+      terminalOutput("reset - Reset robot");
   }
 }
 
