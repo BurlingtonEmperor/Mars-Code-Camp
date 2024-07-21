@@ -106,26 +106,35 @@ function parseLine (line) {
         terminalOutput("Error: robot library was not imported.");
         return false;
       }
-      if (isNaN(line[2])) {
-        terminalOutput('Error: "' + line[2] + '" is not a valid number.');
+      if (isNaN(line[1])) {
+        terminalOutput('Error: "' + line[1] + '" is not a valid number.');
       }
 
       else {
-        
+        yRobot(parseInt(line[1]));
       }
       break;
+
+    case "down" :
+      if (isNaN(line[2])) {
+        terminalOutput('Error: "' + line[1] + '" is not a valid number.');
+      }
+
+      else {
+        yRobot(-parseInt(line[1]));
+      }
 
     case "right" :
       if (robotImport == false) {
         terminalOutput("Error: robot library was not imported.");
         return false;
       }
-      if (isNaN(line[2])) {
-        terminalOutput('Error: "' + line[2] + '" is not a valid number.');
+      if (isNaN(line[1])) {
+        terminalOutput('Error: "' + line[1] + '" is not a valid number.');
       }
 
       else {
-
+        xRobot(parseInt(line[1]));
       }
       break;
 
@@ -134,12 +143,12 @@ function parseLine (line) {
         terminalOutput("Error: robot library was not imported.");
         return false;
       }
-      if (isNaN(line[2])) {
-        terminalOutput('Error: "' + line[2] + '" is not a valid number.');
+      if (isNaN(line[1])) {
+        terminalOutput('Error: "' + line[1] + '" is not a valid number.');
       }
 
       else {
-
+        xRobot(-parseInt(line[1]));
       }
       break;
 
