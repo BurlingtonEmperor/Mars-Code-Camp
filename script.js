@@ -55,6 +55,7 @@ function parseLine (line) {
     case "left" :
       firstCode = "left";
       moreSuppose = 1;
+      break;
     case "collect" :
       moreSuppose = 0;
       firstCode = "Collected a sample!";
@@ -121,8 +122,10 @@ function parseLine (line) {
       }
 
       else {
+        // alert("test");
         dyRobot(parseInt(line[1]));
       }
+      break;
 
     case "right" :
       if (robotImport == false) {
@@ -139,6 +142,7 @@ function parseLine (line) {
       break;
 
     case "left" :
+      // alert("here");
       if (robotImport == false) {
         terminalOutput("Error: robot library was not imported.");
         return false;
@@ -148,6 +152,7 @@ function parseLine (line) {
       }
 
       else {
+        // alert("r");
         dxRobot(parseInt(line[1]));
       }
       break;
@@ -293,6 +298,9 @@ const mars = document.getElementById("mars");
 
 const ctx = mars.getContext("2d");
 
+let tryX = 0;
+let tryY = 0;
+
 function Robot (x, y, size, color) {
   this.x = x;
   this.y = y;
@@ -309,29 +317,35 @@ marsRobot.draw();
 
 function resetRobot () {
   ctx.clearRect(0, 0, mars.width, mars.height);
+  tryX = 0;
+  tryY = 0;
+  marsRobot.x = 0;
+  marsRobot.y = 0;
   marsRobot.draw();
 }
 
 function yRobot (y) {
   ctx.clearRect(0, 0, mars.width, mars.height);
-  marsRobot.x += (3 * y);
+  marsRobot.y += -y;
   marsRobot.draw();
 }
 
 function dyRobot (y) {
   ctx.clearRect(0, 0, mars.width, mars.height);
-  marsRobot.x -= (3 * y);
+  marsRobot.y += y;
   marsRobot.draw();
 }
 
 function xRobot (x) {
   ctx.clearRect(0, 0, mars.width, mars.height);
-  marsRobot.x += (3 * x);
+  marsRobot.x += x;
   marsRobot.draw();
 }
 
 function dxRobot (x) {
   ctx.clearRect(0, 0, mars.width, mars.height);
-  marsRobot.x -= (3 * x);
+  // alert(marsRobot.x);
+  marsRobot.x += -(2 * x);
+  // alert(marsRobot.x);
   marsRobot.draw();
 }
