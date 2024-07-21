@@ -191,6 +191,7 @@ commandForm.onsubmit = function () {
 
   switch (shortCmd) {
     case "run" :
+      decideEvent();
       let myStream = document.getElementById("code-editor").innerHTML;
       // while(document.getElementById("code-editor").attributes.length > 0) {
       //   document.getElementById("code-editor").removeAttribute(document.getElementById("code-editor").attributes[0].name);
