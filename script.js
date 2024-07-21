@@ -2,7 +2,7 @@
 // Where the scripting will go
 let scriptContent = "";
 let sampleNum = 0;
-let robotImport = false;
+let robotImport = true;
 
 const whereRU = document.getElementById("whereru");
 const adviceHolder = document.getElementById("advice");
@@ -116,7 +116,7 @@ function parseLine (line) {
       break;
 
     case "down" :
-      if (isNaN(line[2])) {
+      if (isNaN(line[1])) {
         terminalOutput('Error: "' + line[1] + '" is not a valid number.');
       }
 
