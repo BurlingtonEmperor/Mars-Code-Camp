@@ -275,49 +275,52 @@ function errorGenerator () {
   geeGives = geeWhiz.toLowerCase().replace(" ", "");
 
   switch (geeGives) {
+    default:
+      alert("You were unable to resolve the problem, and more costs amounted...");
+      break;
     case "battery":
       if (randomNum == 0) {
-        terminalOutput("Congrats! The hardware issue was resolved.");
+        alert("Congrats! The hardware issue was resolved.");
       }
 
       else {
-        terminalOutput("Wrong part was replaced. The robot will blame you for this.");
+        alert("Wrong part was replaced. The robot will blame you for this.");
       }
       break;
     case "wires":
       if (randomNum == 1) {
-        terminalOutput("Congrats! The hardware issue was resolved.");
+        alert("Congrats! The hardware issue was resolved.");
       }
 
       else {
-        terminalOutput("Wrong part was replaced. The robot will blame you for this.");
+        alert("Wrong part was replaced. The robot will blame you for this.");
       }
       break;
     case "radio" :
       if (randomNum == 2) {
-        terminalOutput("Congrats! The hardware issue was resolved.");
+        alert("Congrats! The hardware issue was resolved.");
       }
 
       else {
-        terminalOutput("Wrong part was replaced. The robot will blame you for this.");
+        alert("Wrong part was replaced. The robot will blame you for this.");
       }
       break;
     case "motor" :
       if (randomNum == 3) {
-        terminalOutput("Congrats! The hardware issue was resolved.");
+        alert("Congrats! The hardware issue was resolved.");
       }
 
       else {
-        terminalOutput("Wrong part was replaced. The robot will blame you for this.");
+        alert("Wrong part was replaced. The robot will blame you for this.");
       }
       break;
     case "wheels" :
       if (randomNum == 4) {
-        terminalOutput("Congrats! The hardware issue was resolved.");
+        alert("Congrats! The hardware issue was resolved.");
       }
 
       else {
-        terminalOutput("Wrong part was replaced. The robot will blame you for this.");
+        alert("Wrong part was replaced. The robot will blame you for this.");
       }
       break;
   }
