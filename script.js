@@ -14,7 +14,7 @@ function runScript () {
   const cleanedContent = DOMPurify.sanitize(scriptContent);
   let finalStuffing = destroyDiv(cleanedContent);
 
-  alert(finalStuffing);
+  // alert(finalStuffing);
   let scriptParsed = finalStuffing.split("[n");
   for (let i = 0; i < scriptParsed.length; i++) {
     let codeLine = scriptParsed[i].split(" ");
@@ -121,7 +121,7 @@ function parseLine (line) {
       }
 
       else {
-        yRobot(-parseInt(line[1]));
+        dyRobot(parseInt(line[1]));
       }
 
     case "right" :
@@ -148,7 +148,7 @@ function parseLine (line) {
       }
 
       else {
-        xRobot(-parseInt(line[1]));
+        dxRobot(parseInt(line[1]));
       }
       break;
 
@@ -318,8 +318,20 @@ function yRobot (y) {
   marsRobot.draw();
 }
 
+function dyRobot (y) {
+  ctx.clearRect(0, 0, mars.width, mars.height);
+  marsRobot.x -= (3 * y);
+  marsRobot.draw();
+}
+
 function xRobot (x) {
   ctx.clearRect(0, 0, mars.width, mars.height);
   marsRobot.x += (3 * x);
+  marsRobot.draw();
+}
+
+function dxRobot (x) {
+  ctx.clearRect(0, 0, mars.width, mars.height);
+  marsRobot.x -= (3 * x);
   marsRobot.draw();
 }
