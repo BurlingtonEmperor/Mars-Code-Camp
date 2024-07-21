@@ -8,7 +8,11 @@ const commandForm = document.getElementById("cmd-form");
 
 function runScript () {
   // alert(scriptContent);
-  let scriptParsed = scriptContent.split("[n");
+  const cleanedContent = DOMPurify.sanitize(scriptContent);
+  let finalStuffing = destroyDiv(cleanedContent);
+
+  alert(finalStuffing);
+  let scriptParsed = finalStuffing.split("[n");
   for (let i = 0; i < scriptParsed.length; i++) {
     let codeLine = scriptParsed[i].split(" ");
     parseLine(codeLine);
@@ -18,12 +22,12 @@ function runScript () {
 function parseLine (line) {
   let firstCode = "";
   let moreSuppose = 0;
-
-  // alert(line);
   
   switch (line[0]) {
     default:
       firstCode = "Syntax Error (this means that you miswrote a piece of your code.)";
+      break;
+    case "" :
       break;
     case "import" :
       firstCode = "lib";
@@ -68,6 +72,8 @@ function parseLine (line) {
   }
 
   switch (firstCode) {
+    case "":
+      break;
     case "output" :
       let printedArr = line;
       printedArr[0] = "";
@@ -141,6 +147,14 @@ function parseLine (line) {
   }
 }
 
+function destroyDiv (line) {
+  line = line.replace("<div>", "[n");
+  line = line.replace("</div>", "[n");
+  line = line.replace(/<[^>]*>/g, '[n');
+  
+  return line;
+}
+
 // Terminal
 cmdReq = document.getElementById("cmd-req");
 terminalOutputs = document.getElementById("terminal-outputs");
@@ -157,11 +171,21 @@ commandForm.onsubmit = function () {
   switch (shortCmd) {
     case "run" :
       let myStream = document.getElementById("code-editor").innerHTML;
+      // while(document.getElementById("code-editor").attributes.length > 0) {
+      //   document.getElementById("code-editor").removeAttribute(document.getElementById("code-editor").attributes[0].name);
+      // }
+      
       let thyStream = myStream.replace("<div>", "[n");
       let whyStream = thyStream.replace("</div>", "[n");
       let kaiStream = whyStream.replace("<br>", "[n");
+      let shyStream = kaiStream.replace("<span>", "[n");
+
+      let hiStream = shyStream.replace("<div>", "[n");
+      let skyStream = hiStream.replace("</div>", "[n");
+      let pieStream = skyStream.replace("<br>", "[n");
+      let cryStream = pieStream.replace("<span>", "[n");
       
-      scriptContent = kaiStream;
+      scriptContent = cryStream;
       runScript();
       break;
     case "help" :
@@ -173,7 +197,7 @@ commandForm.onsubmit = function () {
 
 function terminalOutput (output) {
   const clean = DOMPurify.sanitize(output);
-  terminalOutputs.innerHTML += "<p>" + clean + "</p>"
+  terminalOutputs.innerHTML += "<p>" + clean.replace(/<[^>]*>/g, '') + "</p>"
 }
 
 terminalOutput('Type "help" for a list of commands.');
