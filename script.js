@@ -40,8 +40,12 @@ function parseLine (line) {
       firstCode = "output";
       moreSuppose = 1;
       break;
-    case "move" :
+    case "up" :
       firstCode = "robomove";
+      moreSuppose = 1;
+      break;
+    case "down" :
+      firstCode = "down";
       moreSuppose = 1;
       break;
     case "right" :
@@ -291,6 +295,18 @@ const marsRobot = new Robot(0, 0, 12, "green");
 marsRobot.draw();
 
 function resetRobot () {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, mars.width, mars.height);
+  marsRobot.draw();
+}
+
+function yRobot (y) {
+  ctx.clearRect(0, 0, mars.width, mars.height);
+  marsRobot.x += (3 * y);
+  marsRobot.draw();
+}
+
+function xRobot (x) {
+  ctx.clearRect(0, 0, mars.width, mars.height);
+  marsRobot.x += (3 * x);
   marsRobot.draw();
 }
