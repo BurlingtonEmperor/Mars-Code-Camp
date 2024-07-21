@@ -98,11 +98,26 @@ commandForm.onsubmit = function () {
 
   commandRaw = cmdReq.value;
   terminalOutput(commandRaw);
+  cmdReq.value = "";
+
+  shortCmd = commandRaw.toLowerCase();
+
+  switch (shortCmd) {
+    case "run" :
+      alert(document.getElementById("code-editor").innerHTML);
+      break;
+    case "help" :
+      terminalOutput("help - Get a list of commands");
+      terminalOutput("run - Run your code");
+  }
 }
 
 function terminalOutput (output) {
-  terminalOutputs.innerHTML += "<p>" + output + "</p>"
+  const clean = DOMPurify.sanitize(output);
+  terminalOutputs.innerHTML += "<p>" + clean + "</p>"
 }
+
+terminalOutput('Type "help" for a list of commands.');
 
 // Random events
 

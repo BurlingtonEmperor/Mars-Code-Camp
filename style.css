@@ -80,6 +80,11 @@ body {
   font-size: 2vw;
   background-color: black;
   box-shadow: 5px 10px 18px black;
+  white-space: pre-wrap;      
+  white-space: -moz-pre-wrap;  
+  white-space: -pre-wrap;      
+  white-space: -o-pre-wrap;    
+  word-wrap: break-word;  
 }
 
 #terminal {
@@ -92,6 +97,10 @@ body {
   background-color: black;
   box-shadow: 5px 10px 18px black;
   overflow-y: auto;
+}
+
+#terminal p {
+  margin: 0;
 }
 
 #cmd-req {
