@@ -238,14 +238,86 @@ function decideEvent () {
 
   switch (randomNum) {
     case 0:
+      errorGenerator();
       break;
     case 1:
+    case 2:
+    case 3:
+    case 4:
+      break;
+  }
+}
+
+function errorGenerator () {
+  let randomNum = Math.floor(Math.random() * 5);
+  let geeWhiz = "";
+
+  switch (randomNum) {
+    case 0:
+      alert("Hardware Error: Inconsistent voltage occurs, and the robot moves much slower than before.");
+      break;
+    case 1:
+      alert("Hardware Error: Your sensors are malfunctioning.");
       break;
     case 2:
+      alert("Hardware Error: Your robot is having trouble connecting to the main server.");
       break;
     case 3:
+      alert("Hardware Error: Your robot is moving in a crooked manner and it appears to be slower.");
       break;
     case 4:
+      alert("Hardware Error: Your robot is having trouble moving, but there is no visible electrical issue.");
+      break;
+  }
+
+  geeWhiz = prompt("You have 5 options for a part to fix: battery, wires, radio, motor, or wheels. Which part is it?");
+  geeGives = geeWhiz.toLowerCase().replace(" ", "");
+
+  switch (geeGives) {
+    case "battery":
+      if (randomNum == 0) {
+        terminalOutput("Congrats! The hardware issue was resolved.");
+      }
+
+      else {
+        terminalOutput("Wrong part was replaced. The robot will blame you for this.");
+      }
+      break;
+    case "wires":
+      if (randomNum == 1) {
+        terminalOutput("Congrats! The hardware issue was resolved.");
+      }
+
+      else {
+        terminalOutput("Wrong part was replaced. The robot will blame you for this.");
+      }
+      break;
+    case "radio" :
+      if (randomNum == 2) {
+        terminalOutput("Congrats! The hardware issue was resolved.");
+      }
+
+      else {
+        terminalOutput("Wrong part was replaced. The robot will blame you for this.");
+      }
+      break;
+    case "motor" :
+      if (randomNum == 3) {
+        terminalOutput("Congrats! The hardware issue was resolved.");
+      }
+
+      else {
+        terminalOutput("Wrong part was replaced. The robot will blame you for this.");
+      }
+      break;
+    case "wheels" :
+      if (randomNum == 4) {
+        terminalOutput("Congrats! The hardware issue was resolved.");
+      }
+
+      else {
+        terminalOutput("Wrong part was replaced. The robot will blame you for this.");
+      }
       break;
   }
 }
