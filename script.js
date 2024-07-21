@@ -111,3 +111,25 @@ function decideEvent () {
       break;
   }
 }
+
+// buttons
+$("#tm-button").click(function () {
+  $("#code-editor").hide();
+  $("#robot-run").hide();
+
+  $("#terminal").show();
+});
+
+$("#ce-button").click(function () {
+  $("#terminal").hide();
+  $("#robot-run").hide();
+
+  $("#code-editor").show();
+});
+
+$("#run-button").click(function () {
+  $("#terminal").hide();
+  $("#code-editor").hide();
+
+  $("#robot-run").show();
+});
