@@ -3,6 +3,8 @@
 let scriptContent = "";
 let sampleNum = 0;
 
+const commandForm = document.getElementById("cmd-form");
+
 function runScript () {
   let scriptParsed = scriptContent.split("\n");
   for (let i = 0; i < scriptParsed.length; i++) {
@@ -88,9 +90,18 @@ function parseLine (line) {
 }
 
 // Terminal
+cmdReq = document.getElementById("cmd-req");
+terminalOutputs = document.getElementById("terminal-outputs");
+
+commandForm.onsubmit = function () {
+  event.preventDefault();
+
+  commandRaw = cmdReq.value;
+  terminalOutput(commandRaw);
+}
 
 function terminalOutput (output) {
-  
+  terminalOutputs.innerHTML += "<p>" + output + "</p>"
 }
 
 // Random events
@@ -133,3 +144,14 @@ $("#run-button").click(function () {
 
   $("#robot-run").show();
 });
+
+// Terminal Blink
+
+const blink = document.getElementById("blink");
+setInterval(function () {
+  blink.style.visibility = "hidden";
+
+  setTimeout(function () {
+    blink.style.visibility = "visible";
+  }, 200);
+}, 400);

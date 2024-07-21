@@ -18,7 +18,12 @@
     <section id="button-switch"><a id="ce-button" class="button">[Goto Editor]</a><a id="tm-button" class="button">[Goto Terminal]</a><a id="run-button" class="button">[Goto Robot]</a></section>
     <br/>
     <section id="code-editor" contenteditable="true"></section>
-    <section id="terminal"></section>
+    <section id="terminal">
+      <section id="terminal-outputs"></section>
+      <form id="cmd-form" autocomplete="off">
+        <p><a id="blink">█</a><input type="text" id="cmd-req" required/></p>
+      </form>
+    </section>
     <section id="robot-run"></section>
 
     <script src="https://codesalvageon.github.io/magichat/scripts/jquery.js"></script>
