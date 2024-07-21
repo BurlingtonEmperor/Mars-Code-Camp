@@ -4,6 +4,9 @@ let scriptContent = "";
 let sampleNum = 0;
 let robotImport = false;
 
+const whereRU = document.getElementById("whereru");
+const adviceHolder = document.getElementById("advice");
+
 const commandForm = document.getElementById("cmd-form");
 
 function runScript () {
@@ -192,6 +195,10 @@ commandForm.onsubmit = function () {
       terminalOutput("help - Get a list of commands");
       terminalOutput("run - Run your code");
       terminalOutput("reset - Reset robot");
+      break;
+    case "reset" :
+      resetRobot();
+      break;
   }
 }
 
@@ -226,6 +233,8 @@ $("#tm-button").click(function () {
   $("#code-editor").hide();
   $("#robot-run").hide();
 
+  whereRU.innerText = "[Terminal]";
+
   $("#terminal").show();
 });
 
@@ -233,12 +242,16 @@ $("#ce-button").click(function () {
   $("#terminal").hide();
   $("#robot-run").hide();
 
+  whereRU.innerText = "[Code Editor]";
+
   $("#code-editor").show();
 });
 
 $("#run-button").click(function () {
   $("#terminal").hide();
   $("#code-editor").hide();
+
+  whereRU.innerText = "[Robot]";
 
   $("#robot-run").show();
 });
@@ -253,3 +266,31 @@ setInterval(function () {
     blink.style.visibility = "visible";
   }, 200);
 }, 400);
+
+// Robot movements
+
+const mars = document.getElementById("mars");
+
+// mars.width = "80%";
+// mars.height = "60%";
+
+const ctx = mars.getContext("2d");
+
+function Robot (x, y, size, color) {
+  this.x = x;
+  this.y = y;
+  this.size = size;
+  this.color = color;
+  this.draw = () => {
+    ctx.fillStyle = this.color;
+    ctx.fillRect(this.x, this.y, this.size, this.size);
+  };
+}
+
+const marsRobot = new Robot(0, 0, 12, "green");
+marsRobot.draw();
+
+function resetRobot () {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  marsRobot.draw();
+}

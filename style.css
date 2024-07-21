@@ -87,6 +87,13 @@ body {
   word-wrap: break-word;  
 }
 
+#mars {
+  width: 80%;
+  height: 60%;
+  background-color: black;
+  box-shadow: 5px 10px 18px black;
+}
+
 #terminal {
   display: none;
   width: 80%;
